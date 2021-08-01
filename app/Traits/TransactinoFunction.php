@@ -18,7 +18,7 @@ trait TransactinoFunction
 
     public function getAlltransation($routeId,$transactinosId){
         $transactinos = '';
-        if (!empty($transactinosId)){
+        if (empty($transactinosId)){
             $transactinos = Transactino::where('route_id',$routeId)->sum('total_amount');
         }else{
             $transactinos = Transactino::where('route_id',$routeId)->where('id',$transactinosId)->sum('total_amount');
