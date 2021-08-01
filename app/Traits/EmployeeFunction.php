@@ -11,7 +11,7 @@ trait EmployeeFunction
             ->first();
         $this->response = response()->json('exist', 409);
         if(!$employeeNamel){
-            Employee::create(['first_name' => $firstName ,'last_name' => $lastName]);
+            Employee::insert(['first_name' => $firstName ,'last_name' => $lastName]);
             $this->response = response()->json('success added', 201);
         }
 

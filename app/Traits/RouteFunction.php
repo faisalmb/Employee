@@ -11,7 +11,7 @@ trait RouteFunction
             ->first();
         $this->response = response()->json('exist', 409);
         if(!$route){
-            Route::create(['employee_id' => $employeeID ,'route_no' => $routeNo,'route_name' => $routeName]);
+            Route::insert(['employee_id' => $employeeID ,'route_no' => $routeNo,'route_name' => $routeName]);
             $this->response = response()->json('success added', 201);
         }
 
