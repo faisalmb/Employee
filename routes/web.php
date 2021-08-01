@@ -13,7 +13,12 @@
 |
 */
 
+$router->get('/', function () use ($router) {
+    return $router->app->version();
+});
+
 $router->group(['prefix' => 'api'], function () use ($router) {
+
     $router->post('AddEmployee', ['uses' => 'EmployeeController@store']);
     $router->post('AddRoute', ['uses' => 'RouteController@store']);
     $router->post('AddTransactino', ['uses' => 'TransactinoController@store']);
