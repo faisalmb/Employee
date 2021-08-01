@@ -16,7 +16,7 @@ class CreateRoutesTable extends Migration
         Schema::create('routes', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('Employee_ID');
-            $table->foreign('Employee_ID')->references('id')->on('employees');
+            $table->foreign('employee_id')->references('id')->on('employees');
             $table->string('route_name');
             $table->unsignedBigInteger('route_no');
 
