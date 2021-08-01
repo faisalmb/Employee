@@ -15,4 +15,5 @@
 
 $router->group(['prefix' => 'api'], function () use ($router) {
     $router->post('AddEmployee', ['uses' => 'EmployeeController@store']);
+    $router->post('AddRoute', ['uses' => 'RouteController@store']);
 });
