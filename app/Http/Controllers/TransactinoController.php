@@ -17,4 +17,15 @@ class TransactinoController extends Controller
         $routeNo = $request->route_no;
         return $this->addTransactino($routeId,$routeNo,$totalAmount);
     }
+
+    public function getAllTransactionsRequest(Request $request){
+        $routeId = $request->routeId;
+        $transactinosId = null;
+       return $this->getAlltransation($routeId,$transactinosId);
+    }
+    public function getAllTransactionsByIdRequest(Request $request){
+        $routeId = $request->routeId;
+        $transactinosId = $request->transactinosId;
+        return $this->getAlltransation($routeId,$transactinosId);
+    }
 }

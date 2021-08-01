@@ -22,4 +22,6 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     $router->post('AddEmployee', ['uses' => 'EmployeeController@store']);
     $router->post('AddRoute', ['uses' => 'RouteController@store']);
     $router->post('AddTransactino', ['uses' => 'TransactinoController@store']);
+    $router->get('Transactino/{routeId}/{transactinosId}', ['uses' => 'TransactinoController@getAllTransactionsByIdRequest']);
+    $router->get('Transactino/{routeId}', ['uses' => 'TransactinoController@getAllTransactionsRequest']);
 });

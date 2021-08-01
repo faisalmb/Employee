@@ -1,5 +1,7 @@
 <?php
 namespace App\Traits;
+use App\Models\Route;
+use App\Models\Employee;
 use App\Models\Transactino;
 
 trait TransactinoFunction
@@ -11,6 +13,34 @@ trait TransactinoFunction
             $this->response = response()->json('success added', 201);
 
             return $this->response;
+
+    }
+
+    public function getAlltransation($routeId,$transactinosId){
+        $transactinos = '';
+        if (!empty($transactinosId)){
+            $transactinos = Transactino::where('route_id',$routeId)->sum('total_amount');
+        }else{
+            $transactinos = Transactino::where('route_id',$routeId)->where('id',$transactinosId)->sum('total_amount');
+        }
+
+        $route = Route::where('id',$routeId)->first();
+//        $employee = Employee::where('id',$route->employee_id)->first();
+
+         $summaryboj = (object)[
+             "total_amount"=> $transactinos,
+             "total_hour"=> []
+         ];
+        $rotsobj = (object) [
+            "route_id" => $route->id,
+            "route_name"=> $route->route_name,
+            "salesman_summary" => $summaryboj
+        ];
+        $response = (object)[
+            "salesman" =>$rotsobj
+        ];
+        $this->response = response()->json([$response], 200);
+        return $this->response;
 
     }
 }
