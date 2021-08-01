@@ -17,8 +17,8 @@ class CreateTransactinosTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('route_id');
             $table->foreign('route_id')->references('id')->on('routes');
-            $table->unsignedBigInteger('route_no');
-            $table->foreign('route_no')->references('id')->on('routes');
+            $table->unsignedBigInteger('route_No');
+//            $table->foreign('route_no')->references('route_no')->on('routes');
             $table->string('total_amount');
             $table->timestamps();
         });
