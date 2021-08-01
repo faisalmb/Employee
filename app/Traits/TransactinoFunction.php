@@ -6,11 +6,12 @@ use App\Models\Transactino;
 
 trait TransactinoFunction
 {
+    use GenralFunction;
     protected $response;
     public function addTransactino($routeId,$routeNo,$totalAmount){
 
             Transactino::create(['route_id' => $routeId ,'route_no' => $routeNo,'total_amount' => $totalAmount]);
-            $this->response = response()->json('success added', 201);
+            $this->response = $this->generalResponse(true, 201, 'success', $errors = null, null);
 
             return $this->response;
 
@@ -39,7 +40,8 @@ trait TransactinoFunction
         $response = (object)[
             "salesman" =>$rotsobj
         ];
-        $this->response = response()->json([$response], 200);
+        $response = [$response];
+        $this->response = $this->generalResponse(true, 200, 'success', $errors = null, $response); // response()->json([$response], 200);
         return $this->response;
 
     }
